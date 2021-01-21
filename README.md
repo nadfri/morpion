@@ -1,6 +1,6 @@
 # Morpion
 
-Morpion Game JS HTML CSS
+Morpion Tic Tac Toc Game JS HTML CSS
 
 # Test here
 

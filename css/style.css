@@ -1,15 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: gray;
+    background-color: #ca5959;
     width: 600px;
     max-width: 600px;
     margin: auto;
+    font-family: 'Kaushan Script', cursive;
+    font-weight: bolder;
 }
 
-header {
+.divInfo {
     text-align: center;
     border: 5px ridge orange;
     border-radius: 5px;
@@ -17,8 +22,12 @@ header {
     background-color: #93acc1;
 }
 
-header p {
+.divInfo p {
     margin: 5px;
+}
+
+.mirror {
+    transform: rotate(180deg);
 }
 
 .parent {
@@ -70,6 +79,32 @@ header p {
 
 .resetBTN:hover {
     background-color: teal;
+}
+
+.newGame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color:orange;
+    display: none;
+    cursor: pointer;
+}
+
+.newGame div {
+    -webkit-box-reflect: below;
+    height: 50%;
+    text-align: center;
+}
+
+.newGame p{
+    margin-top:10vh
 }
 
 @media (max-width:799px) {
