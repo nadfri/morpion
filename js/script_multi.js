@@ -110,6 +110,7 @@ function reset() {
     for (let box of boxes) {
         box.textContent = "";
         box.style.backgroundColor = "teal";
+        box.style.color = "white";
     }
 }
 /*Reset Button*/

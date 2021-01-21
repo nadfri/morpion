@@ -17,6 +17,7 @@ const tabOfWins = [
     ["3", "6", "9"],
 ];
 
+
 //Adding Events Click on all box
 for (let box of boxes) {
     box.onclick = () => {
@@ -27,20 +28,12 @@ for (let box of boxes) {
 //Function of play
 function play(box) {
     if (box.textContent == "") {
-        if (player1) {
-            box.style.color = "blue";
-            box.textContent = "x";
-            console.log(box.style.color)
-            tabPlayer1.push(box.dataset.value);
-            checkWin("Player ONE", tabPlayer1);
-        } else {
-            box.textContent = "o";
-            tabPlayer2.push(box.dataset.value);
-            checkWin("SkyNet", tabPlayer2);
-        }
 
-        togglePlayer();//Change Player
-
+        box.style.color = "blue";
+        box.textContent = "x";
+        tabPlayer1.push(box.dataset.value);
+        checkWin("Player ONE", tabPlayer1);
+        skyNetplay();
 
     } else {
         //box not empty
@@ -91,7 +84,6 @@ function checkWin(player, tabPlayer) {
                                 <p>Equality!!!<p>
                                 <p>New Game? Click Here...</p>
                              </div>`;
-
         newGame.style.display = "flex";
         newGame.onclick = reset;
     }
@@ -100,7 +92,6 @@ function checkWin(player, tabPlayer) {
 /*Reset the Game*/
 function reset() {
     newGame.style.display = "none";
-    whoBegin();
     tabPlayer1 = [];
     tabPlayer2 = [];
     round = 0;
@@ -110,23 +101,27 @@ function reset() {
     for (let box of boxes) {
         box.textContent = "";
         box.style.backgroundColor = "teal";
+        box.style.color = "white";
     }
+    player1Begin = !player1Begin;
+    if (!player1Begin) skyNetplay();
 }
 /*Reset Button*/
 resetBTN.onclick = reset;
 
-/*Toggle Player*/
-function togglePlayer() {
-    player1 = !player1 //change first player
-    info.textContent = player1 ? "Round of Player One" : "Round of SkyNet";
+/*IA of SkyNet*/
+function skyNetplay() {
+    setTimeout(() => {
+        let emptyBoxes = Array.from(boxes).filter(box => box.textContent == "");
+        console.log(emptyBoxes);
+        let max = emptyBoxes.length - 1;
+        let min = 0;
+        let randomBox = Math.floor(Math.random() * (max - min + 1)) + min;
+        console.log(randomBox)
+        emptyBoxes[randomBox].textContent = "0";
+        tabPlayer2.push(emptyBoxes[randomBox].dataset.value);
+        checkWin("SkyNet", tabPlayer2);
+    }, 100);
 }
-
-/*First Begin*/
-function whoBegin() {
-    player1Begin = !player1Begin;
-    player1 = player1Begin ? false : true; //change first player
-    togglePlayer();
-}
-
 
 
