@@ -23,7 +23,7 @@ body {
     justify-content: space-around;
     border-bottom: solid 1px black;
     color: white;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .blue {
@@ -55,7 +55,7 @@ body {
     grid-row-gap: 10px;
     width: 600px;
     height: 600px;
-    margin: 10px 0;
+    margin: 5px 0;
     border: 10px ridge orange;
     border-radius: 5px;
     background-color: gray;

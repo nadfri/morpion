@@ -19,12 +19,9 @@ const tabOfWins = [
 
 
 //Adding Events Click on all box
-for (let box of boxes) {
-    box.onclick = () => {
-        play(box);
-        cloneInfo.textContent = info.textContent;
-    }
-}
+for (let box of boxes)
+    box.onclick = () => play(box);
+
 //Function of play
 function play(box) {
     if (box.textContent == "") {
@@ -96,7 +93,6 @@ function reset() {
     tabPlayer2 = [];
     round = 0;
     gameOver = false;
-    cloneInfo.textContent = info.textContent;
 
     for (let box of boxes) {
         box.textContent = "";
@@ -128,7 +124,7 @@ function skyNetplay() {
 
             checkWin("SkyNet", tabPlayer2);
 
-        }, 50);
+        }, 100);
     }
 }
 

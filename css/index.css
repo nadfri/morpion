@@ -52,7 +52,7 @@ li {
 }
 
 li:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background-color: green;
 }
 
@@ -60,7 +60,6 @@ a {
     display: inline-block;
     text-decoration: none;
     color: black;
-    border: solid 1px black;
     width: 100%;
 }
 
