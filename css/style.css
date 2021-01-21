@@ -23,25 +23,24 @@ body {
     justify-content: space-around;
     border-bottom: solid 1px black;
     color: white;
+    margin-bottom: 5px;
 }
 
 .blue {
     color: blue;
 }
 
-
 .divInfo {
     text-align: center;
     border: 5px ridge orange;
     border-radius: 5px;
-    margin: 10px 0 15px 0;
     background-color: #93acc1;
     box-shadow: #525252 1px 1px 4px 1px;
 }
 
 .divInfo p {
     margin: 5px;
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .mirror {
@@ -56,6 +55,7 @@ body {
     grid-row-gap: 10px;
     width: 600px;
     height: 600px;
+    margin: 10px 0;
     border: 10px ridge orange;
     border-radius: 5px;
     background-color: gray;
@@ -93,6 +93,7 @@ body {
     box-shadow: #525252 1px 1px 4px 1px;
     font-family: inherit;
     font-weight: inherit;
+    margin-top: 5px;
 }
 
 .resetBTN:hover {
@@ -119,6 +120,8 @@ body {
     -webkit-box-reflect: below;
     height: 50%;
     text-align: center;
+    transition: all 5s;
+    transform: rotateY(720deg);
 }
 
 .newGame p {
