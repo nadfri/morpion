@@ -5,6 +5,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: #ca5959;
     width: 600px;
@@ -14,16 +18,30 @@ body {
     font-weight: bolder;
 }
 
+.score {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: solid 1px black;
+    color: white;
+}
+
+.blue {
+    color: blue;
+}
+
+
 .divInfo {
     text-align: center;
     border: 5px ridge orange;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin: 10px 0 15px 0;
     background-color: #93acc1;
+    box-shadow: #525252 1px 1px 4px 1px;
 }
 
 .divInfo p {
     margin: 5px;
+    font-size: 2rem;
 }
 
 .mirror {
@@ -41,8 +59,6 @@ body {
     border: 10px ridge orange;
     border-radius: 5px;
     background-color: gray;
-    margin: auto;
-    margin-bottom: 5px;
     padding: 8px;
     box-shadow: #525252 1px 1px 4px 1px;
 }
@@ -55,7 +71,7 @@ body {
     border-radius: 5px;
     background-color: teal;
     color: white;
-    font-size: 2rem;
+    font-size: 3rem;
     transition: all 0.5s;
     cursor: pointer;
     box-shadow: #525252 1px 1px 4px 1px;
@@ -70,11 +86,13 @@ body {
     display: block;
     width: 100%;
     border: none;
-    margin: auto;
+    padding: 8px;
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 3px;
     box-shadow: #525252 1px 1px 4px 1px;
+    font-family: inherit;
+    font-weight: inherit;
 }
 
 .resetBTN:hover {
@@ -92,7 +110,7 @@ body {
     display: flex;
     justify-content: center;
     font-size: 2rem;
-    color:orange;
+    color: orange;
     display: none;
     cursor: pointer;
 }
@@ -103,13 +121,14 @@ body {
     text-align: center;
 }
 
-.newGame p{
-    margin-top:10vh
+.newGame p {
+    margin-top: 10vh
 }
 
 @media (max-width:799px) {
     body {
         width: 100%;
+        height: 100%;
     }
     .parent {
         width: 100vw;

@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
 body {
     background-color: #ca5959;
     width: 600px;
@@ -13,6 +20,7 @@ body {
     border: 10px ridge orange;
     border-radius: 5px;
     margin: auto;
+    margin: 10px;
     box-shadow: #525252 1px 1px 4px 1px;
 }
 
@@ -23,33 +31,51 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
+}
+
+h1{
+    margin-bottom: 10vh;
+    font-size: 3rem;
 }
 
 li {
     width: 50%;
-    border: teal 1px solid;
+    border: black 1px solid;
     border-radius: 5px;
     margin: 25px;
     text-align: center;
     font-size: 2rem;
     background-color: orange;
     box-shadow: #525252 1px 1px 4px 1px;
+    transition: all 0.5s;
+}
+
+li:hover {
+    transform: scale(1.2);
+    background-color: green;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 @media (max-width:799px) {
-    body {
+    html, body {
         width: 100%;
+        height: 100%;
     }
     .container {
-        width: 100vw;
+        width: 100%;
         max-width: 600px;
-        height: 100vw;
+        height: 100%;
+        margin: 0;
+    }
+    ul {
+        height: 100%;
+    }
+    li {
+        width: 90%;
     }
 }

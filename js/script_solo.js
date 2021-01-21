@@ -19,22 +19,28 @@ const tabOfWins = [
 
 //Adding Events Click on all box
 for (let box of boxes) {
-    box.onclick = () => play(box);
+    box.onclick = () => {
+        play(box);
+        cloneInfo.textContent = info.textContent;
+    }
 }
 //Function of play
 function play(box) {
     if (box.textContent == "") {
         if (player1) {
-            box.innerHTML = "x";
+            box.style.color = "blue";
+            box.textContent = "x";
+            console.log(box.style.color)
             tabPlayer1.push(box.dataset.value);
             checkWin("Player ONE", tabPlayer1);
         } else {
-            box.innerHTML = "o";
+            box.textContent = "o";
             tabPlayer2.push(box.dataset.value);
-            checkWin("Player TWO", tabPlayer2);
+            checkWin("SkyNet", tabPlayer2);
         }
 
-        player1 = !player1;//Change player
+        togglePlayer();//Change Player
+
 
     } else {
         //box not empty
@@ -49,41 +55,78 @@ function checkWin(player, tabPlayer) {
 
     for (let win of tabOfWins) {
         let count = 0;
+        let result = [];
+
         for (let value of tabPlayer) {
-            if (win.includes(value))
+            if (win.includes(value)) {
                 count++;//if 3 values found, player wins
+                result.push(value);
+            }
         }
 
         if (count == 3) {
+            for (let box of boxes)
+                if (result.includes(box.dataset.value))
+                    box.style.backgroundColor = "green";
+
             gameOver = true; //game is over
-            setTimeout(() => {
-                alert(player + " WINS!!!" + "\nPlay Again?");
-                reset();
-            }, 300);
+
+            /*Score*/
+            if (player == "Player ONE") scoreOne.textContent++;
+            else scoreTwo.textContent++;
+
+            newGame.innerHTML = `<div>
+                                    <p>${player} Wins!!!</p>
+                                    <p>New Game? Click Here...</p>
+                                 </div>`;
+
+            newGame.style.display = "flex";
+            newGame.onclick = reset;
         }
     }
 
     /*Case of Equality, Max 9 rounds*/
     if (round == 9 && gameOver == false) {
-        setTimeout(() => {
-            alert("Equality...\nPlay Again?");
-            reset();
-        }, 300);
+        newGame.innerHTML = `<div>
+                                <p>Equality!!!<p>
+                                <p>New Game? Click Here...</p>
+                             </div>`;
+
+        newGame.style.display = "flex";
+        newGame.onclick = reset;
     }
 }
 
 /*Reset the Game*/
 function reset() {
-    player1Begin = !player1Begin;
-    player1 = player1Begin ? true : false; //change first player
+    newGame.style.display = "none";
+    whoBegin();
     tabPlayer1 = [];
     tabPlayer2 = [];
     round = 0;
     gameOver = false;
+    cloneInfo.textContent = info.textContent;
 
     for (let box of boxes) {
         box.textContent = "";
+        box.style.backgroundColor = "teal";
     }
 }
 /*Reset Button*/
 resetBTN.onclick = reset;
+
+/*Toggle Player*/
+function togglePlayer() {
+    player1 = !player1 //change first player
+    info.textContent = player1 ? "Round of Player One" : "Round of SkyNet";
+}
+
+/*First Begin*/
+function whoBegin() {
+    player1Begin = !player1Begin;
+    player1 = player1Begin ? false : true; //change first player
+    togglePlayer();
+}
+
+
+

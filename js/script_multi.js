@@ -28,16 +28,18 @@ for (let box of boxes) {
 function play(box) {
     if (box.textContent == "") {
         if (player1) {
-            box.innerHTML = "x";
+            box.style.color = "blue";
+            box.textContent = "x";
+            console.log(box.style.color)
             tabPlayer1.push(box.dataset.value);
             checkWin("Player ONE", tabPlayer1);
         } else {
-            box.innerHTML = "o";
+            box.textContent = "o";
             tabPlayer2.push(box.dataset.value);
             checkWin("Player TWO", tabPlayer2);
         }
 
-        togglePlayer();
+        togglePlayer();//Change Player
 
 
     } else {
@@ -68,6 +70,11 @@ function checkWin(player, tabPlayer) {
                     box.style.backgroundColor = "green";
 
             gameOver = true; //game is over
+
+            /*Score*/
+            if (player == "Player ONE") scoreOne.textContent++;
+            else scoreTwo.textContent++;
+
             newGame.innerHTML = `<div>
                                     <p>${player} Wins!!!</p>
                                     <p>New Game? Click Here...</p>
