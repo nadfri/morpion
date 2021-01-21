@@ -111,17 +111,25 @@ resetBTN.onclick = reset;
 
 /*IA of SkyNet*/
 function skyNetplay() {
-    setTimeout(() => {
-        let emptyBoxes = Array.from(boxes).filter(box => box.textContent == "");
-        console.log(emptyBoxes);
-        let max = emptyBoxes.length - 1;
-        let min = 0;
-        let randomBox = Math.floor(Math.random() * (max - min + 1)) + min;
-        console.log(randomBox)
-        emptyBoxes[randomBox].textContent = "0";
-        tabPlayer2.push(emptyBoxes[randomBox].dataset.value);
-        checkWin("SkyNet", tabPlayer2);
-    }, 100);
+
+    if (gameOver == false) {
+        setTimeout(() => {
+            if (boxes[4].textContent == "") {
+                boxes[4].textContent = "o";
+                tabPlayer2.push("5");
+            }
+            else {
+                let emptyBoxes = Array.from(boxes).filter(box => box.textContent == "");
+                let max = emptyBoxes.length - 1;
+                let randomBox = Math.floor(Math.random() * (max + 1));
+                emptyBoxes[randomBox].textContent = "o";
+                tabPlayer2.push(emptyBoxes[randomBox].dataset.value);
+            }
+
+            checkWin("SkyNet", tabPlayer2);
+
+        }, 50);
+    }
 }
 
 
