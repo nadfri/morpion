@@ -67,13 +67,12 @@ a {
 
 .installBtn {
     position: fixed;
-    bottom: 4rem;
-    left: -100%;
+    bottom: -100px;
     height: 3rem;
     width: 100%;
     border: none;
     outline: none;
-    background-color: teal;
+    background-color: #11698e;
     color: white;
     display: flex;
     justify-content: center;
@@ -82,7 +81,7 @@ a {
 }
 
 .slide {
-    transform: translateX(100%);
+    transform: translateY(-100px);
 }
 
 @media (max-width:799px) {
