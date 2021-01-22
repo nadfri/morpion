@@ -27,6 +27,7 @@ function play(box) {
     if (box.textContent == "") {
 
         box.style.color = "blue";
+        box.style.backgroundColor = "teal";
         box.textContent = "x";
         tabPlayer1.push(box.dataset.value);
         checkWin("Player ONE", tabPlayer1);
@@ -35,7 +36,7 @@ function play(box) {
     } else {
         //box not empty
         box.style.backgroundColor = "red";
-        setTimeout(() => (box.style.backgroundColor = "teal"), 500);
+        setTimeout(() => (box.style.backgroundColor = "#11698e"), 500);
     }
 }
 
@@ -96,7 +97,7 @@ function reset() {
 
     for (let box of boxes) {
         box.textContent = "";
-        box.style.backgroundColor = "teal";
+        box.style.backgroundColor = "#11698e";
         box.style.color = "white";
     }
     player1Begin = !player1Begin;
@@ -112,6 +113,7 @@ function skyNetplay() {
         setTimeout(() => {
             if (boxes[4].textContent == "") {
                 boxes[4].textContent = "o";
+                boxes[4].style.backgroundColor = "#466f6f";
                 tabPlayer2.push("5");
             }
             else {
@@ -119,6 +121,7 @@ function skyNetplay() {
                 let max = emptyBoxes.length - 1;
                 let randomBox = Math.floor(Math.random() * (max + 1));
                 emptyBoxes[randomBox].textContent = "o";
+                emptyBoxes[randomBox].style.backgroundColor = "#466f6f";
                 tabPlayer2.push(emptyBoxes[randomBox].dataset.value);
             }
 

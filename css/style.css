@@ -10,20 +10,31 @@ html {
 }
 
 body {
-    background-color: #ca5959;
+    background-color: #93acc1;
     width: 600px;
     max-width: 600px;
     margin: auto;
     font-family: 'Kaushan Script', cursive;
     font-weight: bolder;
+    text-shadow: #353535 1px 1px 2px;
 }
 
 .score {
     display: flex;
     justify-content: space-around;
-    border-bottom: solid 1px black;
+    align-items: center;
+    border-bottom: solid 1px #11698e;
     color: white;
     margin-bottom: 2px;
+    box-shadow: #525252 1px 1px 4px 1px;
+    border-radius: 3px;
+}
+
+.score img {
+    height: 1.5rem;
+    box-shadow: #525252 1px 1px 4px 1px;
+    border-radius: 50%;
+    vertical-align: middle;
 }
 
 .blue {
@@ -32,7 +43,7 @@ body {
 
 .divInfo {
     text-align: center;
-    border: 5px ridge orange;
+    border: 5px ridge #7ed5d7;
     border-radius: 5px;
     background-color: #93acc1;
     box-shadow: #525252 1px 1px 4px 1px;
@@ -56,9 +67,9 @@ body {
     width: 600px;
     height: 600px;
     margin: 5px 0;
-    border: 10px ridge orange;
+    border: 10px ridge #aacfd0;
     border-radius: 5px;
-    background-color: gray;
+    background-color: #8d9090;
     padding: 8px;
     box-shadow: #525252 1px 1px 4px 1px;
 }
@@ -67,9 +78,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid 1px black;
+    border: solid 7px #19456b;
     border-radius: 5px;
-    background-color: teal;
+    background-color: #11698e;
     color: white;
     font-size: 3rem;
     transition: all 0.5s;
@@ -79,12 +90,12 @@ body {
 
 .box:hover {
     transform: scale(1.1);
-    background-color: orange;
+    background-color: teal;
 }
 
 .resetBTN {
     display: block;
-    width: 100%;
+    width: 99%;
     border: none;
     padding: 8px;
     cursor: pointer;
@@ -94,9 +105,12 @@ body {
     font-family: inherit;
     font-weight: inherit;
     margin-top: 5px;
+    margin: auto;
+    background-color: #8d9090;
+    text-shadow: #353535 1px 1px 2px;
 }
 
-.resetBTN:hover {
+.resetBTN:active {
     background-color: teal;
 }
 
@@ -110,6 +124,7 @@ body {
     backdrop-filter: blur(2px);
     display: flex;
     justify-content: center;
+    align-items: center;
     font-size: 2rem;
     color: orange;
     display: none;
@@ -117,15 +132,19 @@ body {
 }
 
 .newGame div {
-    -webkit-box-reflect: below;
-    height: 50%;
     text-align: center;
     transition: all 5s;
-    transform: rotateY(720deg);
+    animation: rotate infinite 5s;
+}
+
+@keyframes rotate {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .newGame p {
-    margin-top: 10vh
+    margin-top: 10vh;
 }
 
 @media (max-width:799px) {
@@ -147,6 +166,5 @@ body {
     }
     .box:active {
         transform: scale(1.2);
-        background-color: orange;
     }
 }

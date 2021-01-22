@@ -6,18 +6,19 @@
 }
 
 body {
-    background-color: #ca5959;
+    background-color: #93acc1;
     width: 600px;
     max-width: 600px;
     margin: auto;
     font-family: 'Kaushan Script', cursive;
     font-weight: bolder;
+    text-shadow: #353535 1px 1px 2px;
 }
 
 .container {
     width: 600px;
     height: 600px;
-    border: 10px ridge orange;
+    border: 10px ridge #aacfd0;
     border-radius: 5px;
     margin: auto;
     margin: 10px;
@@ -46,14 +47,13 @@ li {
     margin: 25px;
     text-align: center;
     font-size: 2rem;
-    background-color: orange;
+    background-color: #11698e;
     box-shadow: #525252 1px 1px 4px 1px;
     transition: all 0.2s;
 }
 
 li:hover {
     transform: scale(1.1);
-    background-color: green;
 }
 
 a {

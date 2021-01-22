@@ -29,12 +29,13 @@ function play(box) {
     if (box.textContent == "") {
         if (player1) {
             box.style.color = "blue";
+            box.style.backgroundColor = "teal";
             box.textContent = "x";
-            console.log(box.style.color)
             tabPlayer1.push(box.dataset.value);
             checkWin("Player ONE", tabPlayer1);
         } else {
             box.textContent = "o";
+            box.style.backgroundColor = "#466f6f";
             tabPlayer2.push(box.dataset.value);
             checkWin("Player TWO", tabPlayer2);
         }
@@ -45,7 +46,7 @@ function play(box) {
     } else {
         //box not empty
         box.style.backgroundColor = "red";
-        setTimeout(() => (box.style.backgroundColor = "teal"), 500);
+        setTimeout(() => (box.style.backgroundColor = "#11698e"), 500);
     }
 }
 
@@ -109,7 +110,7 @@ function reset() {
 
     for (let box of boxes) {
         box.textContent = "";
-        box.style.backgroundColor = "teal";
+        box.style.backgroundColor = "#11698e";
         box.style.color = "white";
     }
 }
