@@ -73,11 +73,13 @@ a {
     border: none;
     outline: none;
     background-color: #11698e;
-    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 1s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    font-style: italic;
 }
 
 .slide {
