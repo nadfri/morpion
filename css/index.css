@@ -13,7 +13,7 @@ body {
     font-weight: bolder;
     text-shadow: #353535 1px 1px 2px;
     overflow-y: hidden;
-    height: fill-available;
+    height: calc(var(--vh, 1vh) * 100);
 }
 
 .container {

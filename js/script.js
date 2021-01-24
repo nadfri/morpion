@@ -9,6 +9,11 @@ window.onbeforeinstallprompt = (event) => {
     };
 };
 
+/************Permettre le 100vh sur mobile */
+let vh = window.innerHeight * 0.01;
+const hauteur = window.innerHeight;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty("--vh", `${vh}px`);
 
 //*************Service Worker ******************/
 //Register service worker to control making site work offline
