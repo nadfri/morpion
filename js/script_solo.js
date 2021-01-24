@@ -87,8 +87,6 @@ function skyNetplay() {
         let choiceDefense = choiceIA(tabPlayer1);
         let choiceAttack  = choiceIA(tabPlayer2);
         let choice = choiceAttack? choiceAttack : choiceDefense;
-        
-        console.log(choice);
 
         if(choice)
         {
