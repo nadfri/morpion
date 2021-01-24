@@ -71,6 +71,7 @@ function checkWin(player, tabPlayer) {
 
   /*Case of Equality, Max 9 rounds*/
   if (round == 9 && gameOver == false) {
+    gameOver = true;
     newGame.innerHTML = `<div>
                          <p>Equality!!!<p>
                          <p>New Game? Click Here...</p>
@@ -101,35 +102,48 @@ function reset() {
 resetBTN.onclick = reset;
 
 /*IA of SkyNet*/
+function choiceIA(tabPlayer)
+{
+    for (let win of tabOfWins)
+    {
+        let filter = [];
+        filter = win.filter(el=> !tabPlayer.includes(el));
+        if(filter.length == 1 && document.getElementById("box"+filter[0]).textContent =="")
+            return filter[0];
+    }
+}
+
+/*Choice of IA*/
 function skyNetplay() {
   if (gameOver == false) 
   {
     setTimeout(() => 
     {
-        /*Test if 2 cases checked*/
-        let filter = [];
-        for (let win of tabOfWins)
-        {
-             filter = win.filter(el=> !tabPlayer1.includes(el));
-             if(filter.length == 1 && document.getElementById("box"+filter[0]).textContent =="")
-             {
-                console.log(filter)
-                break;
-             }
-        }
+      /*If IA first Player, plays center box*/  
+      if (box5.textContent == "") 
+      {
+        box5.textContent = "o";
+        box5.style.backgroundColor = "#466f6f";
+        tabPlayer2[5] = 5;
+      } 
 
-        /*IA play defense*/
-        if(filter.length == 1)
+      else
+      {
+        /*If IA fisrt Player plays attack, else plays defense*/
+        let tabPlayer = player1Begin? tabPlayer1 : tabPlayer2;
+        let choice  = choiceIA(tabPlayer);
+
+        if(choice)
         {
-            tabPlayer2[filter[0]] = parseInt(filter[0]);
-            let id = document.getElementById("box"+filter[0]);
+            tabPlayer2[choice] = choice;
+            let id = document.getElementById("box"+choice);
             id.textContent = "o";
             id.style.backgroundColor = "#466f6f";
-            checkWin("SkyNet", tabPlayer2);
         }
 
         else
         {
+            /*If no risk, Ia plays random*/
             let emptyBoxes = Array.from(boxes).filter(
             (box) => box.textContent == "");
 
@@ -139,65 +153,10 @@ function skyNetplay() {
             emptyBoxes[randomBox].style.backgroundColor = "#466f6f";
             tabPlayer2[emptyBoxes[randomBox].dataset.value] = parseInt(emptyBoxes[randomBox].dataset.value
             );
-            checkWin("SkyNet", tabPlayer2);
         }
 
-
-
-
-    //   if (box5.textContent == "") 
-    //   {
-    //     box5.textContent = "o";
-    //     box5.style.backgroundColor = "#466f6f";
-    //     tabPlayer2[5] = 5;
-    //   } 
-
-    //   else 
-    //   {
-    //     let played = [...tabPlayer1, ...tabPlayer2];
-
-    //     for (let win of tabOfWins) 
-    //     {
-
-    //         let count = [];
-
-    //         for(let element of win)
-    //         {
-    //             if(!played.includes(element) && element)
-    //                 count.push(element);
-    //         }
-
-    //         console.log(count)     
-    //         if (count.length == 1) 
-    //         {
-    //             console.log("IA")
-    //             tabPlayer2[count[0]] = parseInt(count[0]);
-    //             let id = document.getElementById("box"+count[0]);
-    //             id.textContent = "o";
-    //             id.style.backgroundColor = "#466f6f";
-    //             checkWin("SkyNet", tabPlayer2);
-    //             return;
-    //         } 
-
-    //         else
-    //         {
-    //             let emptyBoxes = Array.from(boxes).filter(
-    //                 (box) => box.textContent == ""
-    //             );
-
-    //             let max = emptyBoxes.length - 1;
-    //             let randomBox = Math.floor(Math.random() * (max + 1));
-    //             emptyBoxes[randomBox].textContent = "o";
-    //             emptyBoxes[randomBox].style.backgroundColor = "#466f6f";
-    //             tabPlayer2[emptyBoxes[randomBox].dataset.value] = parseInt(emptyBoxes[randomBox].dataset.value
-    //             );
-    //             checkWin("SkyNet", tabPlayer2);
-    //             return;
-    //         }  
-    //     }
-    //   }
-
-      //checkWin("SkyNet", tabPlayer2);
+      }
+      checkWin("SkyNet", tabPlayer2);
     }, 100);
   }
 }
