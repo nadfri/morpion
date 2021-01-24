@@ -149,7 +149,7 @@ function checkWin(player, tabPlayer) {
     {
       gameOver = true;
       newGame.innerHTML = `<div>
-                           <p>Equality!!!<p>
+                           <p>Equality!!!</p>
                            <p>New Game? Click Here...</p>
                           </div>`;
   

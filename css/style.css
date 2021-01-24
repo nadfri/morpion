@@ -16,7 +16,6 @@ body {
     font-family: 'Kaushan Script', cursive;
     font-weight: bolder;
     text-shadow: #353535 1px 1px 2px;
-    overflow: hidden;
 }
 
 .score {
@@ -129,6 +128,7 @@ body {
     color: orange;
     display: none;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .newGame div {
