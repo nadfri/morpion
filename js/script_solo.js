@@ -8,21 +8,15 @@ let round        = 0;
 
 const boxes = document.querySelectorAll(".box");
 const tabOfWins = [
-  [8, 1, 6],
-  [3, 5, 7],
-  [4, 9, 2],
-  [8, 3, 4],
-  [1, 5, 9],
-  [6, 7, 2],
-  [8, 5, 2],
-  [6, 5, 4],
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["1", "5", "9"],
+    ["7", "5", "3"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["3", "6", "9"],
 ];
-
-/*Magic Square
-|8|1|6| => 15
-|3|5|7| => 15
-|4|9|2| => 15
-*/
 
 /****************Adding Events Click on all box****************/
 for (let box of boxes) box.onclick = () => play(box);
@@ -33,7 +27,7 @@ function play(box) {
     box.style.color = "blue";
     box.style.backgroundColor = "teal";
     box.textContent = "x";
-    tabPlayer1[box.dataset.value] = parseInt(box.dataset.value);
+    tabPlayer1[box.dataset.value] = box.dataset.value;
     checkWin("Player ONE", tabPlayer1);
 
     /*IA Plays*/
@@ -68,10 +62,10 @@ function randomChoice()
         (box) => box.textContent == "");
 
     let max    = empty.length - 1;
-    let random = Math.floor(Math.random() * (max + 1));
+    let random = Math.floor(Math.random() * (max + 1)).toString();
     empty[random].textContent           = "o";
     empty[random].style.backgroundColor = "#466f6f";
-    tabPlayer2[empty[random].dataset.value] = parseInt(empty[random].dataset.value);
+    tabPlayer2[empty[random].dataset.value] = empty[random].dataset.value;
 }
 
 /*Specific Choices of IA*/
@@ -85,7 +79,7 @@ function skyNetplay() {
       {
         box5.style.backgroundColor = "#466f6f";
         box5.textContent = "o";
-        tabPlayer2[5]    = 5;
+        tabPlayer2[5]    = "5";
       } 
 
       else
@@ -114,28 +108,40 @@ function skyNetplay() {
 function checkWin(player, tabPlayer) {
     round++;
   
-    for (let win of tabOfWins) {
-      let victory = 0;
-  
-      for (let value of win) {
-        victory += tabPlayer[value];
-      }
-  
-      if (victory == 15) 
-      {
-        gameOver = true; //game is over
-        /*Score update*/
-        if (player == "Player ONE") scoreOne.textContent++;
-        else scoreTwo.textContent++;
-  
-        newGame.innerHTML = `<div>
-                              <p>${player} Wins!!!</p>
-                              <p>New Game? Click Here...</p>
-                              </div>`;
-  
-        newGame.style.display = "flex";
-        newGame.onclick       = reset;
-      }
+    for (let win of tabOfWins) 
+    {
+        let count = 0;
+        let result = [];
+
+        for (let value of tabPlayer) 
+        {
+            if (win.includes(value)) 
+            {
+                count++;//if 3 values found, player wins
+                result.push(value);
+            }
+        }
+
+        if (count == 3) 
+        {
+            for (let box of boxes)
+                if (result.includes(box.dataset.value))
+                    box.style.backgroundColor = "green";
+
+            gameOver = true; //game is over
+        
+            /*Score update*/
+            if (player == "Player ONE") scoreOne.textContent++;
+            else scoreTwo.textContent++;
+
+            newGame.innerHTML = `<div>
+                                <p>${player} Wins!!!</p>
+                                <p>New Game? Click Here...</p>
+                                </div>`;
+
+            newGame.style.display = "flex";
+            newGame.onclick       = reset;
+        }
     }
   
     /*Case of Equality, Max 9 rounds*/
