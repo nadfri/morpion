@@ -84,9 +84,11 @@ function skyNetplay() {
 
       else
       {
-        /*If IA fisrt Player plays attack, else plays defense*/
-        let tabPlayer = player1Begin? tabPlayer1 : tabPlayer2;
-        let choice    = choiceIA(tabPlayer);
+        let choiceDefense = choiceIA(tabPlayer1);
+        let choiceAttack  = choiceIA(tabPlayer2);
+        let choice = choiceAttack? choiceAttack : choiceDefense;
+        
+        console.log(choice);
 
         if(choice)
         {
