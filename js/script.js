@@ -1,8 +1,10 @@
-window.onbeforeinstallprompt = (event) => {
-    event.preventDefault(); // annuler la banniere par defaut
-    installBtn.classList.add("slide"); //affiche la banniere perso
 
+window.onbeforeinstallprompt = (event) => {
+    installBtn.classList.add("slide"); //affiche la banniere perso
+    event.preventDefault(); // annuler la banniere par defaut
+    
     installBtn.onclick = () => {
+        console.log("hey")
         installBtn.classList.remove("slide"); //faire disparaitre le bouton
         setTimeout(() => installBtn.style.display = "none", 500);
         event.prompt(); //permettre l'installation
