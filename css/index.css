@@ -12,6 +12,7 @@ body {
     font-family: 'Kaushan Script', cursive;
     font-weight: bolder;
     text-shadow: #353535 1px 1px 2px;
+    overflow-y: hidden;
 }
 
 .container {
